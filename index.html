@@ -1,16 +1,226 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YT → TikTok Reup App</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YT → TikTok Reup App — BUCCULANO-DEV</title>
+  <meta name="description" content="Ứng dụng desktop phát hiện video YouTube mới và đăng lên TikTok cực nhanh (<10s) khi bạn sở hữu bản quyền hoặc được cấp phép." />
   <style>
-    body{font-family:system-ui,Segoe UI,Roboto,Arial;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.6}
+    :root{
+      --bg:#0b1220; --card:#111827; --muted:#94a3b8; --text:#e5e7eb; --soft:#0f172a;
+      --brand:#22d3ee; --brand2:#8b5cf6; --ok:#10b981; --warn:#f59e0b; --danger:#ef4444;
+      --border:#1f2937; --chip:#0b5; --chip2:#06b6d4;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f7fb; --card:#ffffff; --muted:#64748b; --text:#1f2937; --soft:#ffffff; --border:#e2e8f0; }
+    }
+    *{box-sizing:border-box}
+    body{
+      font:14px/1.6 system-ui, Segoe UI, Inter, Roboto, Arial, sans-serif;
+      color:var(--text); background:var(--bg);
+      margin:0; padding:32px 16px;
+    }
+    .wrap{ max-width:1000px; margin:0 auto; }
+    header{ margin-bottom:24px; }
+    .hero{
+      border:1px solid var(--border); border-radius:16px; padding:24px;
+      background:linear-gradient(135deg, rgba(34,211,238,.12), rgba(139,92,246,.12));
+    }
+    h1{ margin:0 0 10px; font-size:28px; letter-spacing:.2px }
+    .sub{ color:var(--muted); margin:4px 0 0 }
+    nav{
+      margin:18px 0 0; display:flex; flex-wrap:wrap; gap:8px;
+    }
+    nav a{
+      text-decoration:none; color:var(--text); border:1px solid var(--border);
+      background:var(--soft); padding:8px 12px; border-radius:999px;
+    }
+    section{
+      border:1px solid var(--border); background:var(--card); border-radius:16px;
+      padding:20px; margin:18px 0;
+    }
+    h2{ margin:0 0 10px; font-size:20px }
+    h3{ margin:18px 0 8px; font-size:16px }
+    ul{ padding-left:18px; margin:8px 0 }
+    .grid{ display:grid; gap:14px }
+    @media (min-width:900px){ .grid.cols-2{ grid-template-columns:1fr 1fr } }
+    .kbd{ font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:var(--soft);
+      border:1px solid var(--border); padding:2px 6px; border-radius:6px; }
+    .callout{ border-left:4px solid var(--brand); padding:10px 12px; background:rgba(34,211,238,.08); border-radius:8px }
+    .ok{ color:var(--ok) } .warn{ color:var(--warn) } .danger{ color:var(--danger) }
+    .pill{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--border); background:var(--soft) }
+    code, pre{ font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    pre{ background:var(--soft); border:1px solid var(--border); padding:12px; border-radius:12px; overflow:auto }
+    footer{ color:var(--muted); text-align:center; margin-top:24px }
+    .links a{ color:var(--brand) }
   </style>
 </head>
 <body>
-  <h1>YT → TikTok Reup App</h1>
-  <p>Ứng dụng desktop giúp phát hiện video YouTube mới và đăng lên TikTok nhanh, chỉ khi người dùng sở hữu bản quyền hoặc được cấp phép.</p>
-  <p><a href="./privacy.html">Privacy Policy</a> • <a href="./terms.html">Terms of Service</a></p>
+  <div class="wrap">
+    <header class="hero">
+      <h1>YT → TikTok Reup App</h1>
+      <p class="sub">Phát hiện video YouTube mới và đăng lên TikTok cực nhanh (<span class="ok">≤ 10 giây</span> end-to-end) <br/>— chỉ khi <b>bạn sở hữu bản quyền</b> hoặc <b>được cấp phép</b>.</p>
+      <nav>
+        <a href="#about">Giới thiệu</a>
+        <a href="#flow">Luồng xử lý</a>
+        <a href="#usage">Cách dùng</a>
+        <a href="#tips">Mẹo & tránh spam</a>
+        <a href="#limits">Khuyến nghị tần suất</a>
+        <a href="#tos">Điều khoản sử dụng</a>
+        <a href="#copyright">Bản quyền</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>Về dự án</h2>
+      <p>Ứng dụng desktop do <b>Đức Quang</b> (BUCCULANO-DEV) phát triển, phục vụ đội nội dung cần đồng bộ/khuếch trương video YouTube lên TikTok theo <b>cơ chế phát hiện tức thời</b> và <b>đăng tự động</b>. Ứng dụng có cơ chế <b>chống trùng lặp</b>, <b>xoay caption/hashtag</b>, cắt/chỉnh thời lượng hợp chuẩn (ví dụ: ép về 61s khi cần), xuất log chi tiết từng bước.</p>
+      <div class="callout">
+        <b>Lưu ý pháp lý:</b> Công cụ chỉ dành cho nội dung bạn sở hữu bản quyền, được cấp phép bởi chủ sở hữu, hoặc thuộc phạm vi sử dụng hợp pháp. Người dùng tự chịu trách nhiệm về nội dung.
+      </div>
+    </section>
+
+    <section id="flow">
+      <h2>Luồng xử lý (tối ưu &lt;10s)</h2>
+      <div class="grid cols-2">
+        <div>
+          <h3>1) Phát hiện video mới</h3>
+          <ul>
+            <li>Theo dõi <span class="pill">Channel</span>/<span class="pill">Playlist</span> đã cấu hình.</li>
+            <li>Đẩy job vào hàng đợi ngay khi phát hiện URL/metadata mới.</li>
+          </ul>
+          <h3>2) Tiền xử lý</h3>
+          <ul>
+            <li>Tải nhanh phần đầu hoặc toàn bộ tuỳ cấu hình.</li>
+            <li>Chuẩn hoá 9:16, bitrate hợp lý, <span class="pill">≤ 61s</span> khi cần (cắt / slow-down nhẹ / chọn đoạn).</li>
+            <li>Gắn caption/hashtag từ mẫu xoay (spintax).</li>
+          </ul>
+        </div>
+        <div>
+          <h3>3) Chống trùng lặp</h3>
+          <ul>
+            <li>Hash nội dung + đối chiếu lịch sử đăng.</li>
+            <li>Không đăng lại khi ID gốc/tiêu đề đã tồn tại.</li>
+          </ul>
+          <h3>4) Đăng TikTok</h3>
+          <ul>
+            <li>Đăng bằng phiên đăng nhập đã lưu của tài khoản đã được bạn cấp.</li>
+            <li>Ghi log <span class="pill">thời gian từng bước</span>, <span class="pill">ID bài</span>, <span class="pill">trạng thái</span>.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub">Lưu ý: Mốc “≤10s” phụ thuộc mạng ổn định, phiên đăng nhập hợp lệ và video nguồn sẵn sàng.</p>
+    </section>
+
+    <section id="usage">
+      <h2>Cách dùng nhanh</h2>
+      <ol>
+        <li><b>Đăng nhập TikTok</b> trong ứng dụng lần đầu (phiên sẽ được lưu cục bộ).</li>
+        <li><b>Thêm nguồn YouTube</b> (channel/playlist/URL) vào danh sách theo dõi.</li>
+        <li><b>Chọn preset chỉnh sửa</b> (ép 9:16, cắt về ≤61s nếu cần, auto-thumbnail).</li>
+        <li><b>Thiết lập caption</b> với spintax & bộ hashtag (xem ví dụ ở dưới).</li>
+        <li><b>Bật theo dõi</b>. Khi có video mới, ứng dụng tự xử lý & đăng trong vài giây.</li>
+        <li><b>Xem log</b> để biết ID bài, tốc độ từng bước và kết quả.</li>
+      </ol>
+
+      <h3>Ví dụ spintax caption</h3>
+      <pre>{Xin chào|Hello|Hey} mọi người! {Xem tiếp|Full} tại YouTube 🎬
+#shorts #tiktok {#amnhac|#giaitri|#review}</pre>
+
+      <h3>Cấu hình gợi ý</h3>
+      <ul>
+        <li>Preset video: <span class="pill">9:16</span>, <span class="pill">1080×1920</span>, <span class="pill">~6–8 Mbps</span>.</li>
+        <li>Thời lượng mục tiêu: <span class="pill">15–61s</span> (tuỳ nội dung).</li>
+        <li>Hashtag: 8–14 thẻ/clip, 3–5 bộ để xoay.</li>
+      </ul>
+    </section>
+
+    <section id="tips">
+      <h2>Mẹo vận hành & tránh bị đánh spam</h2>
+
+      <h3>Nguyên tắc vàng</h3>
+      <ul>
+        <li><b>Chỉ đăng nội dung có quyền</b>. Tôn trọng quyền sở hữu trí tuệ.</li>
+        <li><b>Chất lượng & nhất quán</b>: thumbnail bắt mắt, caption rõ ràng, hashtag liên quan.</li>
+        <li><b>Đa dạng hoá</b>: xoay caption, hashtag, CTA; không lặp 100% giữa các lần đăng.</li>
+      </ul>
+
+      <h3>Thực hành tốt (khuyến nghị)</h3>
+      <ul>
+        <li><b>Khoảng cách bài đăng</b>: giãn <span class="pill">3–7 phút</span> giữa 2 clip khi dồn nhiều clip.</li>
+        <li><b>Warm-up tài khoản mới</b>: tuần đầu chỉ <span class="pill">2–5 clip/ngày</span>, tăng dần sau khi ổn định.</li>
+        <li><b>Xoay nội dung</b>:
+          <ul>
+            <li>Tối thiểu 3 bộ caption + 3 bộ hashtag; hoán vị ngẫu nhiên thứ tự hashtag.</li>
+            <li>Thay đổi 1–2 câu mở đầu/CTA để tránh trùng khớp chuỗi dài.</li>
+          </ul>
+        </li>
+        <li><b>Trùng lặp</b>: bật <em>chống trùng</em> theo hash + tiêu đề; sửa nhẹ tiêu đề khi cần A/B test.</li>
+        <li><b>Log & theo dõi</b>: nếu thấy tỉ lệ “review/thất bại” tăng, <span class="warn">giảm tần suất</span> tạm thời.</li>
+      </ul>
+
+      <h3>Những điều cần tránh</h3>
+      <ul>
+        <li class="danger">Spam dồn dập (đăng liên tiếp vài chục clip trong phút).</li>
+        <li class="danger">Caption/hashtag vô nghĩa hoặc không liên quan nội dung.</li>
+        <li class="danger">Dùng nội dung của người khác <u>khi chưa có phép</u>.</li>
+      </ul>
+    </section>
+
+    <section id="limits">
+      <h2>Khuyến nghị tần suất (mỗi tài khoản)</h2>
+      <p class="sub">Mốc dưới đây mang tính <b>khuyến nghị</b>, có thể thay đổi theo chính sách nền tảng và “độ khoẻ” tài khoản.</p>
+      <div class="grid cols-2">
+        <div>
+          <h3>Giai đoạn khởi động</h3>
+          <ul>
+            <li>Ngày 1–7: <b>2–5 clip/ngày</b>, cách nhau 10–20 phút.</li>
+            <li>Xoay 3 bộ caption & hashtag, tránh lặp 100%.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Vận hành ổn định</h3>
+          <ul>
+            <li><b>6–15 clip/ngày</b> là vùng an toàn với tài khoản đã hoạt động đều.</li>
+            <li>Khung cao: <b>16–30 clip/ngày</b> chỉ nên áp dụng cho tài khoản uy tín & nội dung đa dạng.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="callout">Nếu cần “bùng nổ” trong thời gian ngắn, hãy tăng số tài khoản hợp pháp thay vì ép 1 tài khoản đăng quá dày.</p>
+    </section>
+
+    <section id="tos">
+      <h2>Điều khoản sử dụng</h2>
+      <ul>
+        <li><b>Mục đích hợp pháp</b>: Công cụ chỉ dùng để đăng tải nội dung mà bạn có quyền khai thác.</li>
+        <li><b>Trách nhiệm nội dung</b>: Bạn chịu trách nhiệm trước pháp luật với nội dung đã đăng và mọi khiếu nại liên quan.</li>
+        <li><b>Giới hạn kỹ thuật</b>: Ứng dụng không đảm bảo vượt qua kiểm duyệt nền tảng khi nội dung vi phạm chính sách.</li>
+        <li><b>Giấy phép</b>: Bản quyền phần mềm thuộc <b>Đức Quang (BUCCULANO-DEV)</b>. Bản quyền cấp theo license; có thể ràng buộc thiết bị.</li>
+        <li><b>Hỗ trợ</b>: Hỗ trợ kỹ thuật giới hạn trong phạm vi tính năng phần mềm; không bao gồm xử lý tài khoản bị hạn chế do vi phạm chính sách nền tảng.</li>
+      </ul>
+      <p class="links">Tài liệu riêng: <a href="./privacy.html">Privacy Policy</a> • <a href="./terms.html">Terms of Service (đầy đủ)</a></p>
+    </section>
+
+    <section>
+      <h2>Tóm tắt cấu hình “xoay nội dung”</h2>
+      <ul>
+        <li><b>Caption</b>: Spintax + biến {title}, {channel}, {cta}…</li>
+        <li><b>Hashtag</b>: 3–5 bộ, 8–14 thẻ/bộ; hoán vị thứ tự, tránh thẻ nhạy cảm.</li>
+        <li><b>Tiêu đề</b>: 2–3 mẫu/clip (A/B) — thay đổi cụm đầu câu & emoji.</li>
+      </ul>
+      <pre>Tiêu đề: {Xem nhanh|Highlights} — {title} 🔥
+Caption: {Cảm ơn đã xem|Theo dõi kênh nhé}! Link gốc YouTube trong bio.
+Hashtags: {#shorts #tiktok|#review #xuhuong|#hocmon #giaitri}</pre>
+    </section>
+
+    <section id="copyright">
+      <h2>Bản quyền</h2>
+      <p>© 2025 <b>Đức Quang</b> — BUCCULANO-DEV. Mọi quyền được bảo lưu. Tên thương mại, logo, giao diện và mã nguồn thuộc quyền sở hữu của tác giả. Nghiêm cấm sao chép, bán lại hoặc phân phối trái phép.</p>
+    </section>
+
+    <footer>
+      <p>YT → TikTok Reup App • Phiên bản tài liệu HTML theo dự án hiện tại</p>
+      <p class="links"><a href="#about">Lên đầu trang</a></p>
+    </footer>
+  </div>
 </body>
 </html>
