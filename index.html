@@ -3,229 +3,356 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Facebook Group Auto Poster — Điều khoản & Hướng dẫn</title>
-  <meta name="description" content="Công cụ desktop hỗ trợ đăng bài lên Facebook Groups theo lô có kiểm soát. Tài liệu điều khoản sử dụng, hướng dẫn, mẹo tránh bị đánh spam. © Đức Quang." />
+  <title>FB Group Poster Pro — Điều khoản sử dụng & Cảnh báo pháp lý</title>
+  <meta name="description" content="Điều khoản sử dụng, cảnh báo pháp lý, hướng dẫn và trách nhiệm người dùng cho công cụ desktop FB Group Poster Pro (Facebook Group Auto Poster). Nhà phát triển & cấp bản quyền: Nguyễn Đoàn Đức Quang." />
   <style>
     :root{
       --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937;
       --brand:#22d3ee; --brand2:#8b5cf6; --ok:#10b981; --warn:#f59e0b; --danger:#ef4444;
     }
     @media (prefers-color-scheme: light){
-      :root{ --bg:#f6f7fb; --card:#ffffff; --text:#1f2937; --muted:#64748b; --border:#e2e8f0; }
+      :root{
+        --bg:#f6f7fb; --card:#ffffff; --text:#1f2937;
+        --muted:#64748b; --border:#e2e8f0;
+      }
     }
     *{box-sizing:border-box}
     body{
-      margin:0; padding:28px 16px; background:var(--bg); color:var(--text);
+      margin:0;
+      padding:28px 16px;
+      background:var(--bg);
+      color:var(--text);
       font:14px/1.65 system-ui, Segoe UI, Inter, Roboto, Arial, sans-serif;
     }
     .wrap{max-width:1080px;margin:0 auto}
     .hero{
-      border:1px solid var(--border); background:
-        linear-gradient(135deg, rgba(34,211,238,.10), rgba(139,92,246,.08));
-      padding:20px; border-radius:16px; margin-bottom:18px;
+      border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(34,211,238,.10), rgba(139,92,246,.08));
+      padding:20px;
+      border-radius:16px;
+      margin-bottom:18px;
     }
     h1{margin:.2rem 0 .5rem;font-size:28px}
     .sub{color:var(--muted);margin:.25rem 0 0}
-    nav{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+    nav{
+      margin:12px 0 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
     nav a{
-      text-decoration:none;color:var(--text);border:1px solid var(--border);
-      background:var(--card); padding:8px 12px;border-radius:999px;font-size:13px
+      text-decoration:none;
+      color:var(--text);
+      border:1px solid var(--border);
+      background:var(--card);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
     }
     section{
-      border:1px solid var(--border); background:var(--card);
-      border-radius:16px; padding:18px; margin:16px 0;
+      border:1px solid var(--border);
+      background:var(--card);
+      border-radius:16px;
+      padding:18px;
+      margin:16px 0;
     }
     h2{margin:0 0 10px;font-size:20px}
     h3{margin:14px 0 8px;font-size:16px}
     ul{padding-left:18px;margin:8px 0}
+    ol{padding-left:18px;margin:8px 0}
     .grid{display:grid;gap:14px}
-    @media (min-width:900px){ .cols-2{grid-template-columns:1fr 1fr} .cols-3{grid-template-columns:1fr 1fr 1fr} }
-    .pill{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--border); background:transparent;font-size:12px}
-    .callout{border-left:4px solid var(--brand); background:rgba(34,211,238,.08); padding:10px 12px; border-radius:8px}
-    .ok{color:var(--ok)} .warn{color:var(--warn)} .danger{color:var(--danger)}
-    code,pre{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
-    pre{background:transparent;border:1px dashed var(--border);border-radius:12px;padding:12px;overflow:auto}
-    footer{color:var(--muted);text-align:center;margin-top:20px}
+    @media (min-width:900px){
+      .cols-2{grid-template-columns:1fr 1fr}
+      .cols-3{grid-template-columns:1fr 1fr 1fr}
+    }
+    .pill{
+      display:inline-block;
+      padding:2px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:transparent;
+      font-size:12px;
+    }
+    .callout{
+      border-left:4px solid var(--brand);
+      background:rgba(34,211,238,.08);
+      padding:10px 12px;
+      border-radius:8px;
+    }
+    .warn-box{
+      border-left:4px solid var(--warn);
+      background:rgba(245,158,11,.08);
+      padding:10px 12px;
+      border-radius:8px;
+    }
+    .danger-box{
+      border-left:4px solid var(--danger);
+      background:rgba(239,68,68,.10);
+      padding:10px 12px;
+      border-radius:8px;
+    }
+    .ok{color:var(--ok)}
+    .warn{color:var(--warn)}
+    .danger{color:var(--danger)}
+    footer{
+      color:var(--muted);
+      text-align:center;
+      margin-top:20px;
+    }
     .tiny{font-size:12px;color:var(--muted)}
     .list-tight li{margin:.25rem 0}
+    .strong{font-weight:600}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="hero">
-      <h1>Facebook Group Auto Poster</h1>
-      <p class="sub">Công cụ desktop hỗ trợ đăng bài lên Facebook Groups theo lô có kiểm soát — chỉ dùng khi bạn có quyền, tuân thủ pháp luật & điều khoản nền tảng.</p>
+      <h1>FB Group Poster Pro</h1>
+      <p class="sub">
+        Công cụ desktop hỗ trợ đăng bài lên Facebook Groups theo lô, đa tài khoản, đa proxy —
+        chỉ sử dụng khi bạn có đầy đủ quyền, tuân thủ pháp luật Việt Nam và chính sách Facebook.
+      </p>
       <nav>
-        <a href="#about">Giới thiệu</a>
-        <a href="#features">Tính năng</a>
-        <a href="#usage">Cách dùng</a>
-        <a href="#tips">Mẹo & tránh spam</a>
-        <a href="#limits">Khuyến nghị tần suất</a>
-        <a href="#tos">Điều khoản sử dụng</a>
-        <a href="#copyright">Bản quyền</a>
+        <a href="#about">Giới thiệu & phạm vi</a>
+        <a href="#usage">Mục đích & cách dùng</a>
+        <a href="#legal">Cảnh báo pháp lý</a>
+        <a href="#user-duty">Trách nhiệm người dùng</a>
+        <a href="#tech-risk">Đặc thù kỹ thuật & rủi ro</a>
+        <a href="#liability">Miễn trừ trách nhiệm</a>
+        <a href="#license">Bản quyền & cấp phép</a>
+        <a href="#contact">Thông tin liên hệ</a>
       </nav>
     </header>
 
+    <!-- 1. Giới thiệu & phạm vi -->
     <section id="about">
-      <h2>Giới thiệu</h2>
-      <p>Ứng dụng dành cho quản trị/nhân sự nội dung muốn đăng thông tin hợp pháp lên nhiều nhóm Facebook. Công cụ <b>không phải</b> phần mềm spam; mọi thao tác cần tuân thủ chuẩn mực cộng đồng và chính sách Facebook. Người dùng chịu trách nhiệm cho nội dung, tần suất và tài khoản sử dụng.</p>
+      <h2>1. Giới thiệu & phạm vi sử dụng</h2>
+      <p>
+        <b>FB Group Poster Pro</b> (sau đây gọi là “Phần mềm”) là ứng dụng desktop do
+        <b>Nguyễn Đoàn Đức Quang</b> phát triển, hỗ trợ người dùng:
+      </p>
+      <ul class="list-tight">
+        <li>Đăng bài vào nhiều nhóm Facebook bằng chính tài khoản người dùng.</li>
+        <li>Quản lý nhiều tài khoản (nhiều token), mỗi tài khoản có thể đi kèm một proxy riêng.</li>
+        <li>Cấu hình độ trễ, số luồng, theo dõi log chi tiết trạng thái từng bài đăng.</li>
+      </ul>
       <div class="callout">
-        <b>Lưu ý:</b> Phần mềm chỉ là công cụ hỗ trợ. Chủ sở hữu phần mềm <b>không chịu trách nhiệm</b> với mọi hậu quả phát sinh từ việc người dùng đăng tải nội dung vi phạm pháp luật, vi phạm Điều khoản của Facebook hoặc bị hệ thống đánh dấu là spam.
+        <b>Lưu ý:</b>
+        Phần mềm chỉ là công cụ kỹ thuật hỗ trợ thao tác mà người dùng có thể tự thực hiện thủ công trên Facebook.
+        Phần mềm <b>không phải</b> sản phẩm chính thức của Facebook/Meta, không được Facebook/Meta bảo trợ hay bảo hành.
       </div>
     </section>
 
-    <section id="features">
-      <h2>Tính năng nổi bật</h2>
-      <div class="grid cols-2">
-        <div>
-          <h3>Đăng theo lô có kiểm soát</h3>
-          <ul class="list-tight">
-            <li>Hỗ trợ 3 kiểu bài: <span class="pill">Text</span>, <span class="pill">Link</span>, <span class="pill">Photo</span>.</li>
-            <li>Thiết lập <b>độ trễ</b> giữa các nhóm để giảm rủi ro spam.</li>
-            <li>Ghi log: thời gian từng nhóm, trạng thái, post ID/chi tiết kết quả.</li>
-          </ul>
-          <h3>Quản lý nhóm linh hoạt</h3>
-          <ul class="list-tight">
-            <li>Nhập danh sách Group ID/URL/vanity; chuẩn hoá thành ID số.</li>
-            <li>Có thể hỗ trợ lấy nhóm từ token hoặc quét qua cookie (nếu được phép).</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Soạn thảo & lưu trữ</h3>
-          <ul class="list-tight">
-            <li>Trình soạn thảo với emoji, template, đếm ký tự/từ.</li>
-            <li>Lưu bài để tái sử dụng; xuất báo cáo thống kê và lịch sử.</li>
-          </ul>
-          <h3>Độ ổn định</h3>
-          <ul class="list-tight">
-            <li>Tự ghi nhận lỗi thường gặp, gợi ý điều chỉnh (token, quyền, tần suất).</li>
-            <li>Cấu hình retry nhẹ cho lỗi tạm thời (nếu bật).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
+    <!-- 2. Mục đích & hướng dẫn sử dụng hợp lệ -->
     <section id="usage">
-      <h2>Cách dùng nhanh</h2>
+      <h2>2. Mục đích & Hướng dẫn sử dụng hợp lệ</h2>
+
+      <h3>2.1. Mục đích sử dụng được phép</h3>
+      <ul>
+        <li>Quản lý nội dung cho thương hiệu, doanh nghiệp, cộng đồng một cách minh bạch, chính danh.</li>
+        <li>Đăng thông báo, tin tuyển dụng, chương trình khuyến mãi, nội dung chia sẻ kiến thức… đúng chủ đề nhóm.</li>
+        <li>Tối ưu thời gian cho đội ngũ marketing, chăm sóc cộng đồng, CSKH… nhưng vẫn tôn trọng luật & chính sách.</li>
+      </ul>
+
+      <h3>2.2. Cách dùng cơ bản (tham khảo)</h3>
       <ol>
-        <li><b>Chuẩn bị quyền</b>: dùng tài khoản được phép đăng vào nhóm; token có quyền phù hợp (ví dụ <i>publish_to_groups</i> nếu dùng Graph API) và tuân thủ chính sách Facebook.</li>
-        <li><b>Nhập token</b> (và cookie nếu cần để chuẩn hoá group).</li>
-        <li><b>Thêm danh sách nhóm</b>: dán ID/URL, hệ thống sẽ chuẩn hoá.</li>
-        <li><b>Soạn bài</b>: chọn kiểu <span class="pill">Text/Link/Photo</span>, thêm link hoặc ảnh (file/URL) khi phù hợp.</li>
-        <li><b>Đặt độ trễ</b> (ví dụ 45–180 giây) và <b>kiểm tra lại</b> trước khi chạy.</li>
-        <li><b>Chạy đăng</b> và theo dõi log; nếu tỷ lệ lỗi tăng, hãy <span class="warn">giảm tần suất</span> và <span class="warn">xoay nội dung</span>.</li>
+        <li>
+          <b>Chuẩn bị tài khoản & quyền:</b><br />
+          Dùng tài khoản thật, có quyền đăng vào các nhóm mục tiêu; kiểm tra lại việc tuân thủ
+          nội quy nhóm và chính sách Facebook.
+        </li>
+        <li>
+          <b>Cấu hình tài khoản & proxy:</b><br />
+          Nhập token hợp lệ cho từng tài khoản; tùy chọn gắn mỗi tài khoản một proxy riêng nếu cần
+          phân tách IP để giảm rủi ro.
+        </li>
+        <li>
+          <b>Thêm danh sách nhóm:</b><br />
+          Dán ID/URL nhóm; để Phần mềm chuẩn hóa và lưu lại danh sách group được phép đăng.
+        </li>
+        <li>
+          <b>Tạo nội dung:</b><br />
+          Soạn caption, mô tả, đính kèm ảnh/link… đảm bảo đúng pháp luật, đúng chủ đề, không copy y nguyên
+          cho quá nhiều nhóm; nên chuẩn bị nhiều mẫu khác nhau để xoay.
+        </li>
+        <li>
+          <b>Thiết lập tần suất & độ trễ:</b><br />
+          Chọn số nhóm muốn đăng, đặt độ trễ giữa các lần đăng, số luồng tối đa… ở mức an toàn.
+          Không nên cấu hình “max speed”, đặc biệt với tài khoản mới hoặc nhóm lạ.
+        </li>
+        <li>
+          <b>Chạy và theo dõi log:</b><br />
+          Bắt đầu chiến dịch, quan sát log và tỷ lệ lỗi. Nếu thấy checkpoint, block post, báo spam… phải
+          dừng ngay, tăng độ trễ, giảm số lượng nhóm, xoay nội dung.
+        </li>
       </ol>
-      <p class="tiny">Gợi ý: Lưu bài mẫu làm template để tái sử dụng và xoay nội dung (caption, hashtag, emoji) giữa các lần đăng.</p>
+
+      <div class="warn-box">
+        <b class="warn">Không được sử dụng Phần mềm cho:</b>
+        <ul class="list-tight">
+          <li>Spam, phát tán link độc hại, lừa đảo, MLM, đa cấp trái phép.</li>
+          <li>Đăng nội dung xuyên tạc, kích động thù hằn, khiêu dâm, cờ bạc, cá độ, vay nặng lãi…</li>
+          <li>Mua bán, thuê mượn tài khoản hàng loạt để qua mặt hệ thống của Facebook.</li>
+          <li>Cung cấp “dịch vụ spam thuê” cho bên thứ ba.</li>
+        </ul>
+      </div>
     </section>
 
-    <section id="tips">
-      <h2>Mẹo vận hành & tránh bị đánh spam</h2>
-      <div class="grid cols-2">
-        <div>
-          <h3>Thực hành tốt</h3>
-          <ul>
-            <li><b>Nội dung hợp lệ</b>, hữu ích, liên quan chủ đề nhóm; không lặp y nguyên giữa các nhóm.</li>
-            <li><b>Xoay nội dung</b>: thay đổi tiêu đề/caption/emoji/hashtag; đổi nhẹ thứ tự câu/hashtag.</li>
-            <li><b>Giãn cách</b>: đặt độ trễ giữa các nhóm; phân bổ theo khung giờ khác nhau.</li>
-            <li><b>Đa dạng media</b>: ảnh khác nhau/biến thể nhẹ; thay link đích khi phù hợp.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Tránh các hành vi rủi ro</h3>
-          <ul>
-            <li class="danger">Đăng dồn dập hàng chục bài/phút trên 1 tài khoản.</li>
-            <li class="danger">Dùng nội dung gây hiểu nhầm, trái pháp luật, hoặc vi phạm chuẩn mực cộng đồng.</li>
-            <li class="danger">Lạm dụng link rút gọn/redirect mờ ám; spam từ khoá/hashtag không liên quan.</li>
-            <li class="danger">Dùng token/cookie không hợp lệ, vượt quyền hoặc trái chính sách.</li>
-          </ul>
-        </div>
+    <!-- 3. Cảnh báo pháp lý -->
+    <section id="legal">
+      <h2>3. Cảnh báo pháp lý & chính sách nền tảng</h2>
+      <p>
+        Khi sử dụng Phần mềm, bạn cam kết đã đọc, hiểu và tuân thủ đầy đủ:
+      </p>
+      <ul>
+        <li>Pháp luật Việt Nam hiện hành (quảng cáo, TMĐT, an ninh mạng, bảo vệ người tiêu dùng, sở hữu trí tuệ…).</li>
+        <li>Các <b>Điều khoản dịch vụ</b>, <b>Tiêu chuẩn cộng đồng</b>, <b>Group Rules</b> và các chính sách liên quan của Facebook/Meta.</li>
+        <li>Các quy định chống spam, chống hành vi giả tạo (fake accounts, inauthentic behavior, lạm dụng tự động hoá…).</li>
+      </ul>
+      <div class="warn-box">
+        <b class="warn">Cảnh báo:</b>
+        <ul class="list-tight">
+          <li>Đăng bài hàng loạt, dùng nhiều tài khoản, nhiều proxy, tự động hoá mạnh… đều có thể bị Facebook coi là spam hoặc hành vi không xác thực.</li>
+          <li>Mọi hậu quả như khóa tài khoản, giới hạn tính năng, xóa nội dung, khóa IP/proxy, tranh chấp pháp lý hoặc khiếu nại từ bên thứ ba đều do <b>bạn tự chịu trách nhiệm hoàn toàn</b>.</li>
+          <li>Phần mềm không khuyến khích, không cổ vũ và không hỗ trợ bất kỳ hành vi vi phạm pháp luật hoặc vi phạm chính sách của Facebook.</li>
+        </ul>
       </div>
+    </section>
+
+    <!-- 4. Trách nhiệm người dùng -->
+    <section id="user-duty">
+      <h2>4. Trách nhiệm & cam kết của người dùng</h2>
+
+      <h3>4.1. Tài khoản & quyền truy cập</h3>
+      <ul>
+        <li>Chỉ sử dụng <b>tài khoản thật của chính bạn</b> hoặc tài khoản được chủ tài khoản uỷ quyền hợp pháp.</li>
+        <li>Tự chịu trách nhiệm bảo mật token, cookie, mật khẩu và mọi thông tin đăng nhập sử dụng trong Phần mềm.</li>
+        <li>Tự chịu trách nhiệm nếu lộ token, mất tài khoản, hoặc bị Facebook khóa/hạn chế.</li>
+      </ul>
+
+      <h3>4.2. Nội dung đăng tải</h3>
+      <ul>
+        <li>Tự chịu trách nhiệm toàn bộ về nội dung đã đăng: văn bản, hình ảnh, video, link, thông tin liên hệ, ưu đãi…</li>
+        <li>Cam kết nội dung không vi phạm bản quyền, không trái pháp luật, không gây hiểu nhầm hoặc xâm phạm quyền của bất kỳ tổ chức/cá nhân nào.</li>
+        <li>Đảm bảo nội dung phù hợp với chủ đề từng nhóm, tuân thủ nội quy của từng group.</li>
+      </ul>
+
+      <h3>4.3. Tần suất, cấu hình & cách vận hành</h3>
+      <ul>
+        <li>Tự nghiên cứu và thiết lập tần suất đăng bài, số nhóm, số tài khoản, độ trễ, số luồng… sao cho <b>an toàn</b> và <b>không bị coi là spam</b>.</li>
+        <li>Không lạm dụng tính năng đa luồng, đa tài khoản, đa proxy để spam hoặc che giấu danh tính.</li>
+        <li>Nếu phát hiện dấu hiệu giới hạn (checkpoint, block post, báo cáo spam…), phải dừng ngay để điều chỉnh.</li>
+      </ul>
+
+      <div class="danger-box">
+        <b class="danger">Khẳng định rõ:</b><br />
+        Mọi hành vi sử dụng Phần mềm dẫn đến vi phạm pháp luật, vi phạm điều khoản Facebook, gây thiệt hại cho bên thứ ba
+        hoặc phát sinh tranh chấp dân sự/hình sự đều do <b>bạn tự chịu trách nhiệm hoàn toàn trước pháp luật, trước Facebook
+        và các bên liên quan</b>. Tác giả/chủ sở hữu Phần mềm <b>không chịu bất kỳ trách nhiệm nào dưới mọi hình thức</b>.
+      </div>
+    </section>
+
+    <!-- 5. Đặc thù kỹ thuật & rủi ro -->
+    <section id="tech-risk">
+      <h2>5. Đặc thù kỹ thuật & rủi ro tiềm ẩn</h2>
+      <p>Phần mềm (tùy phiên bản) có thể bao gồm:</p>
+      <ul class="list-tight">
+        <li>Đăng bài theo lô lên nhiều group (text / link / photo) cho nhiều tài khoản.</li>
+        <li>Quản lý nhiều token Facebook, mỗi token có thể gắn một proxy riêng để tách IP.</li>
+        <li>Chạy đa luồng, đặt độ trễ giữa các nhóm, log chi tiết mã lỗi từ Facebook (nếu có).</li>
+      </ul>
+      <p>Các rủi ro kỹ thuật có thể xảy ra (không giới hạn):</p>
+      <ul>
+        <li>Tài khoản bị checkpoint, giới hạn tính năng, khóa tạm thời hoặc vĩnh viễn.</li>
+        <li>Nội dung bị xóa, gắn nhãn vi phạm, giảm phân phối hoặc bị người dùng báo cáo.</li>
+        <li>Proxy/IP bị chặn, chậm, không ổn định hoặc bị đưa vào blacklist.</li>
+        <li>Các thay đổi từ phía Facebook (API, UI, thuật toán chống spam) làm một số tính năng ngừng hoạt động.</li>
+      </ul>
       <div class="callout">
-        <b>Nếu gặp hạn chế/tạm khoá</b>: dừng ngay, tăng độ trễ, giảm số lượng bài, xoay nội dung, xem lại quyền và tính liên quan của nội dung đối với từng nhóm.
+        <b>Quan trọng:</b>
+        Phần mềm <b>không bảo đảm</b> tránh được thuật toán chống spam, không bảo đảm bài đăng luôn thành công,
+        và không bảo đảm tài khoản “an toàn tuyệt đối”.
       </div>
     </section>
 
-    <section id="limits">
-      <h2>Khuyến nghị tần suất (mỗi tài khoản)</h2>
-      <div class="grid cols-3">
-        <div>
-          <h3>Khởi động</h3>
-          <ul class="list-tight">
-            <li>Ngày 1–3: <b>2–5 bài/ngày</b>, cách nhau &ge; 15 phút.</li>
-            <li>Ngày 4–7: <b>5–10 bài/ngày</b>, giữ nội dung đa dạng.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Ổn định</h3>
-          <ul class="list-tight">
-            <li><b>6–15 bài/ngày</b> là vùng an toàn với tài khoản “khỏe”.</li>
-            <li><b>16–30 bài/ngày</b> chỉ áp dụng khi nội dung đa dạng & tương tác tốt.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Xoay nội dung</h3>
-          <ul class="list-tight">
-            <li>Chuẩn bị <b>&ge;3</b> mẫu caption, <b>&ge;3</b> bộ hashtag.</li>
-            <li>Hoán vị thứ tự, thay 1–2 câu mở đầu/kết.</li>
-          </ul>
-        </div>
+    <!-- 6. Miễn trừ trách nhiệm -->
+    <section id="liability">
+      <h2>6. Miễn trừ trách nhiệm & giới hạn trách nhiệm</h2>
+
+      <h3>6.1. Miễn trừ trách nhiệm</h3>
+      <ul>
+        <li>Phần mềm được cung cấp theo nguyên tắc <b>“như hiện trạng”</b> (as-is), không có bất kỳ bảo đảm rõ ràng hoặc ngầm định nào.</li>
+        <li>Tác giả/chủ sở hữu không chịu trách nhiệm cho mọi thiệt hại trực tiếp, gián tiếp, ngẫu nhiên, đặc biệt, mang tính hệ quả… phát sinh từ việc bạn cài đặt, kích hoạt, sử dụng hoặc không thể sử dụng Phần mềm.</li>
+        <li>Không có cam kết về doanh thu, đơn hàng, kết quả marketing hay hiệu quả kinh doanh khi sử dụng Phần mềm.</li>
+      </ul>
+
+      <h3>6.2. Không phải tư vấn pháp lý</h3>
+      <p>
+        Tài liệu này mang tính thông tin chung, <b>không phải</b> tư vấn pháp lý.
+        Nếu bạn hoạt động trong ngành/lĩnh vực có rủi ro cao (tài chính, y tế, game, dịch vụ xuyên biên giới…),
+        hãy tham khảo ý kiến luật sư hoặc chuyên gia pháp lý trước khi sử dụng Phần mềm.
+      </p>
+    </section>
+
+    <!-- 7. Bản quyền & cấp phép -->
+    <section id="license">
+      <h2>7. Bản quyền, cấp phép & sử dụng hợp pháp</h2>
+
+      <h3>7.1. Chủ sở hữu & bản quyền</h3>
+      <p>
+        Phần mềm <b>FB Group Poster Pro</b>, mã nguồn, tên thương mại, giao diện, tài liệu đi kèm
+        thuộc quyền sở hữu trí tuệ của:
+      </p>
+      <p class="strong">
+        Nguyễn Đoàn Đức Quang — BUCCULANO-DEV<br />
+        Số điện thoại: 0905633918
+      </p>
+      <p>
+        Mọi hành vi sao chép, bán lại, cho thuê, phân phối trái phép hoặc chỉnh sửa, gỡ bản quyền
+        mà không có sự đồng ý bằng văn bản của chủ sở hữu đều có thể bị xử lý theo pháp luật.
+      </p>
+
+      <h3>7.2. Cấp bản quyền sử dụng</h3>
+      <ul>
+        <li>Mỗi license chỉ cấp quyền sử dụng Phần mềm theo phạm vi thỏa thuận (theo máy, theo tài khoản, theo thời hạn… tùy gói bạn mua).</li>
+        <li>License <b>không chuyển giao</b> mọi quyền sở hữu trí tuệ đối với Phần mềm; bạn chỉ là người được cấp quyền sử dụng (licensee), không phải chủ sở hữu.</li>
+        <li>Việc mua license <b>không đồng nghĩa</b> tác giả chịu trách nhiệm thay bạn trước pháp luật hoặc trước Facebook.</li>
+      </ul>
+
+      <div class="danger-box">
+        <b class="danger">Xác nhận rõ:</b><br />
+        Tác giả/chủ sở hữu <b>Nguyễn Đoàn Đức Quang</b> chỉ là <b>người cung cấp bản quyền sử dụng Phần mềm</b>,
+        <u>không chịu trách nhiệm</u> về mọi hành vi sử dụng sai mục đích, vi phạm pháp luật hoặc vi phạm điều khoản của Facebook do người dùng thực hiện.
       </div>
-      <p class="tiny">Các mốc trên chỉ là khuyến nghị tham khảo; hãy ưu tiên chất lượng & sự phù hợp của nội dung với từng nhóm.</p>
     </section>
 
-    <section id="tos">
-      <h2>Điều khoản sử dụng</h2>
-      <h3>1) Chấp nhận điều khoản</h3>
-      <p>Khi cài đặt/sử dụng phần mềm, bạn đồng ý với Điều khoản này. Nếu không đồng ý, vui lòng không sử dụng.</p>
+    <!-- 8. Luật áp dụng & liên hệ -->
+    <section id="contact">
+      <h2>8. Luật áp dụng & thông tin liên hệ</h2>
 
-      <h3>2) Phạm vi & Mục đích</h3>
-      <p>Phần mềm cung cấp công cụ hỗ trợ đăng bài lên Facebook Groups cho các mục đích hợp pháp. <b>Không được</b> sử dụng để spam, quấy rối, lừa đảo, hoặc bất kỳ hành vi nào vi phạm pháp luật/điều khoản của Facebook.</p>
+      <h3>8.1. Luật áp dụng</h3>
+      <p>
+        Điều khoản này được điều chỉnh và giải thích theo pháp luật Việt Nam, trừ khi các bên có thỏa thuận khác bằng văn bản.
+        Mọi tranh chấp (nếu có) trước hết được ưu tiên giải quyết bằng thương lượng; nếu không đạt được thỏa thuận,
+        tranh chấp có thể được đưa ra cơ quan có thẩm quyền tại Việt Nam để giải quyết.
+      </p>
 
-      <h3>3) Quyền & Tuân thủ nền tảng</h3>
-      <ul>
-        <li>Bạn phải bảo đảm có quyền đăng vào nhóm mục tiêu (thành viên/được phép).</li>
-        <li>Bạn chịu trách nhiệm có đủ quyền truy cập (token/cookie) và tuân thủ chính sách Facebook, bao gồm nhưng không giới hạn: Platform Terms, Community Standards, Group Rules.</li>
-      </ul>
+      <h3>8.2. Liên hệ hỗ trợ</h3>
+      <p class="list-tight">
+        Người phát triển & cấp bản quyền: <b>Nguyễn Đoàn Đức Quang (BUCCULANO-DEV)</b><br />
+        Số điện thoại: <b>0905633918</b><br />
+        Ghi chú: kênh liên hệ này chỉ phục vụ hỗ trợ kỹ thuật (kích hoạt license, xử lý lỗi phần mềm),
+        <b>không phải</b> kênh tư vấn pháp lý hoặc tư vấn chính sách Facebook.
+      </p>
 
-      <h3>4) Nội dung người dùng</h3>
-      <ul>
-        <li>Bạn tự chịu trách nhiệm với nội dung đã đăng, bao gồm bản quyền, tính xác thực và tính pháp lý.</li>
-        <li>Bạn cam kết không đăng nội dung vi phạm bản quyền, trái pháp luật, gây hiểu nhầm hoặc xâm phạm quyền của bên thứ ba.</li>
-      </ul>
-
-      <h3>5) Hạn chế kỹ thuật</h3>
-      <ul>
-        <li>Phần mềm không bảo đảm vượt qua cơ chế kiểm duyệt hay hạn chế của Facebook.</li>
-        <li>Khi Facebook thay đổi API/chính sách, tính năng có thể bị ảnh hưởng mà không cần thông báo trước.</li>
-      </ul>
-
-      <h3>6) Miễn trừ & Giới hạn trách nhiệm</h3>
-      <ul>
-        <li><b>Chủ sở hữu phần mềm không chịu trách nhiệm</b> cho mọi thiệt hại trực tiếp/gián tiếp phát sinh do việc bạn sử dụng sai mục đích, vi phạm pháp luật, vi phạm điều khoản Facebook hoặc bị hệ thống đánh dấu là spam.</li>
-        <li>Phần mềm được cung cấp “nguyên trạng”; không có bảo đảm ngầm định về tính phù hợp cho mục đích cụ thể.</li>
-      </ul>
-
-      <h3>7) Bồi thường (Indemnification)</h3>
-      <p>Bạn đồng ý bồi thường và giữ cho chủ sở hữu phần mềm không bị thiệt hại trước mọi khiếu nại, trách nhiệm, tổn thất và chi phí phát sinh từ việc bạn sử dụng phần mềm, nội dung đã đăng, hoặc vi phạm Điều khoản này.</p>
-
-      <h3>8) Chấm dứt</h3>
-      <p>Chủ sở hữu có quyền tạm dừng/chấm dứt quyền sử dụng khi phát hiện hành vi vi phạm. Bạn có thể ngừng sử dụng bất kỳ lúc nào.</p>
-
-      <h3>9) Cập nhật điều khoản</h3>
-      <p>Điều khoản có thể thay đổi theo thời gian. Phiên bản mới thay thế phiên bản cũ khi được công bố.</p>
-
-      <h3>10) Luật áp dụng & Liên hệ</h3>
-      <p>Điều khoản được điều chỉnh theo pháp luật Việt Nam (trừ khi thoả thuận khác bằng văn bản). Liên hệ hỗ trợ: <span class="pill">BUCCULANO-DEV</span>.</p>
-    </section>
-
-    <section id="copyright">
-      <h2>Bản quyền</h2>
-      <p>© 2025 <b>Đức Quang</b> — BUCCULANO-DEV. Mọi quyền được bảo lưu. Phần mềm, tên thương mại, logo, tài liệu thuộc quyền sở hữu của tác giả. Nghiêm cấm sao chép, bán lại hoặc phân phối trái phép.</p>
-      <p class="tiny">Tài liệu này chỉ nhằm mục đích thông tin và không phải là tư vấn pháp lý. Hãy tham vấn luật sư khi cần.</p>
+      <p class="tiny">
+        Bằng việc cài đặt, kích hoạt hoặc tiếp tục sử dụng FB Group Poster Pro,
+        bạn xác nhận đã đọc, hiểu và đồng ý với toàn bộ Điều khoản & Cảnh báo pháp lý nêu trên.
+      </p>
     </section>
 
     <footer>
-      <p>Facebook Group Auto Poster — Tài liệu điều khoản & hướng dẫn</p>
+      <p>FB Group Poster Pro — Điều khoản sử dụng & Cảnh báo pháp lý</p>
       <p><a href="#about" style="color:var(--brand)">Lên đầu trang</a></p>
     </footer>
   </div>
