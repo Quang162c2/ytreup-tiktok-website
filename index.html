@@ -11,6 +11,7 @@
       --brand:#22d3ee; --brand2:#8b5cf6; --ok:#10b981; --warn:#f59e0b; --danger:#ef4444;
       --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
       --glow: 0 0 20px rgba(34, 211, 238, 0.3);
+      --glass: rgba(15, 23, 42, 0.7);
     }
     @media (prefers-color-scheme: light){
       :root{
@@ -18,6 +19,7 @@
         --muted:#64748b; --border:#e2e8f0;
         --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         --glow: 0 0 20px rgba(34, 211, 238, 0.2);
+        --glass: rgba(255, 255, 255, 0.7);
       }
     }
     *{box-sizing:border-box}
@@ -32,29 +34,7 @@
       min-height: 100vh;
     }
     
-    /* Hiệu ứng hoa rơi */
-    .petal {
-      position: fixed;
-      top: -50px;
-      width: 20px;
-      height: 20px;
-      background: linear-gradient(135deg, rgba(34,211,238,0.7), rgba(139,92,246,0.7));
-      border-radius: 50% 0 50% 50%;
-      transform: rotate(45deg);
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.7;
-      animation: fall linear forwards;
-    }
-    
-    @keyframes fall {
-      to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-    
-    /* Hiệu ứng nền động */
+    /* Hiệu ứng nền động nâng cao */
     .bg-animation {
       position: fixed;
       top: 0;
@@ -72,8 +52,23 @@
       height: 200%;
       top: -50%;
       left: -50%;
-      background: radial-gradient(circle, rgba(34,211,238,0.05) 0%, transparent 70%);
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(34,211,238,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(139,92,246,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, rgba(16,185,129,0.03) 0%, transparent 50%);
       animation: rotate 60s linear infinite;
+    }
+    
+    .bg-animation::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: 
+        linear-gradient(90deg, transparent 0%, rgba(34,211,238,0.02) 50%, transparent 100%);
+      animation: shimmer 8s ease-in-out infinite;
     }
     
     @keyframes rotate {
@@ -81,19 +76,109 @@
       100% { transform: rotate(360deg); }
     }
     
+    @keyframes shimmer {
+      0%, 100% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+    }
+    
+    /* Hiệu ứng hoa rơi nâng cao */
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, rgba(34,211,238,0.7), rgba(139,92,246,0.7));
+      border-radius: 50% 0 50% 50%;
+      transform: rotate(45deg);
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.7;
+      animation: fall linear forwards;
+      filter: blur(0.5px);
+    }
+    
+    .petal:nth-child(3n) {
+      background: linear-gradient(135deg, rgba(245,158,11,0.7), rgba(239,68,68,0.7));
+      width: 15px;
+      height: 15px;
+    }
+    
+    .petal:nth-child(5n) {
+      background: linear-gradient(135deg, rgba(16,185,129,0.7), rgba(34,211,238,0.7));
+      width: 25px;
+      height: 25px;
+    }
+    
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
     .wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1}
     
-    /* Hero section với hiệu ứng */
+    /* Header với contact nổi bật */
+    .contact-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .contact-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-btn:hover {
+      background: var(--brand);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow), var(--glow);
+    }
+    
+    .contact-btn.zalo {
+      background: linear-gradient(135deg, #0068ff, #22d3ee);
+      color: white;
+    }
+    
+    .contact-btn.sms {
+      background: linear-gradient(135deg, #10b981, #22d3ee);
+      color: white;
+    }
+    
+    /* Hero section với hiệu ứng nâng cao */
     .hero{
       border:1px solid var(--border);
       background:linear-gradient(135deg, rgba(34,211,238,.10), rgba(139,92,246,.08));
-      padding:20px;
-      border-radius:16px;
-      margin-bottom:18px;
+      padding:25px;
+      border-radius:20px;
+      margin-bottom:25px;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
       transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(34,211,238,0.1);
     }
     
     .hero::before {
@@ -118,27 +203,40 @@
     
     h1{
       margin:.2rem 0 .5rem;
-      font-size:28px;
+      font-size:32px;
       background: linear-gradient(90deg, var(--brand), var(--brand2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: titleGlow 3s ease-in-out infinite alternate;
+      font-weight: 700;
     }
     
     @keyframes titleGlow {
-      0% { text-shadow: 0 0 5px rgba(34, 211, 238, 0.5); }
-      100% { text-shadow: 0 0 15px rgba(139, 92, 246, 0.5); }
+      0% { 
+        text-shadow: 0 0 5px rgba(34, 211, 238, 0.5);
+        filter: brightness(1);
+      }
+      100% { 
+        text-shadow: 0 0 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
+        filter: brightness(1.1);
+      }
     }
     
-    .sub{color:var(--muted);margin:.25rem 0 0;transition: color 0.3s ease;}
+    .sub{
+      color:var(--muted);
+      margin:.25rem 0 0;
+      transition: color 0.3s ease;
+      font-size: 16px;
+      line-height: 1.6;
+    }
     .hero:hover .sub { color: var(--text); }
     
     nav{
-      margin:12px 0 0;
+      margin:20px 0 0;
       display:flex;
       flex-wrap:wrap;
-      gap:8px;
+      gap:10px;
     }
     
     nav a{
@@ -146,12 +244,13 @@
       color:var(--text);
       border:1px solid var(--border);
       background:var(--card);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:13px;
+      padding:10px 16px;
+      border-radius:12px;
+      font-size:14px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(5px);
     }
     
     nav a::before {
@@ -172,21 +271,23 @@
     nav a:hover {
       background: rgba(34,211,238,0.1);
       border-color: var(--brand);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
     
-    /* Section với hiệu ứng */
+    /* Section với hiệu ứng nâng cao */
     section{
       border:1px solid var(--border);
-      background:var(--card);
-      border-radius:16px;
-      padding:18px;
-      margin:16px 0;
+      background:var(--glass);
+      border-radius:20px;
+      padding:25px;
+      margin:20px 0;
       box-shadow: var(--shadow);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(34,211,238,0.1);
     }
     
     section::before {
@@ -210,19 +311,20 @@
     }
     
     h2{
-      margin:0 0 10px;
-      font-size:20px;
+      margin:0 0 15px;
+      font-size:24px;
       position: relative;
       display: inline-block;
+      font-weight: 600;
     }
     
     h2::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: -8px;
       left: 0;
       width: 0;
-      height: 2px;
+      height: 3px;
       background: linear-gradient(90deg, var(--brand), var(--brand2));
       transition: width 0.5s ease;
     }
@@ -232,10 +334,11 @@
     }
     
     h3{
-      margin:14px 0 8px;
-      font-size:16px;
+      margin:18px 0 10px;
+      font-size:18px;
       position: relative;
-      padding-left: 15px;
+      padding-left: 20px;
+      font-weight: 600;
     }
     
     h3::before {
@@ -244,8 +347,8 @@
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       background: var(--brand);
       border-radius: 50%;
       transition: all 0.3s ease;
@@ -253,16 +356,18 @@
     
     section:hover h3::before {
       background: var(--brand2);
-      transform: translateY(-50%) scale(1.2);
+      transform: translateY(-50%) scale(1.3);
+      box-shadow: 0 0 10px var(--brand2);
     }
     
-    ul{padding-left:18px;margin:8px 0}
-    ol{padding-left:18px;margin:8px 0}
+    ul{padding-left:22px;margin:10px 0}
+    ol{padding-left:22px;margin:10px 0}
     
     li {
       position: relative;
       transition: all 0.3s ease;
-      padding: 2px 0;
+      padding: 4px 0;
+      line-height: 1.6;
     }
     
     li:hover {
@@ -270,7 +375,7 @@
       color: var(--brand);
     }
     
-    .grid{display:grid;gap:14px}
+    .grid{display:grid;gap:18px}
     @media (min-width:900px){
       .cols-2{grid-template-columns:1fr 1fr}
       .cols-3{grid-template-columns:1fr 1fr 1fr}
@@ -278,7 +383,7 @@
     
     .pill{
       display:inline-block;
-      padding:2px 8px;
+      padding:4px 12px;
       border-radius:999px;
       border:1px solid var(--border);
       background:transparent;
@@ -292,16 +397,17 @@
       transform: scale(1.1);
     }
     
-    /* Callout boxes với hiệu ứng */
+    /* Callout boxes với hiệu ứng nâng cao */
     .callout, .warn-box, .danger-box {
       border-left:4px solid var(--brand);
       background:rgba(34,211,238,.08);
-      padding:10px 12px;
-      border-radius:8px;
-      margin: 10px 0;
+      padding:15px 18px;
+      border-radius:12px;
+      margin: 15px 0;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(5px);
     }
     
     .callout::before, .warn-box::before, .danger-box::before {
@@ -322,7 +428,7 @@
     
     .callout:hover, .warn-box:hover, .danger-box:hover {
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     
     .warn-box{
@@ -350,15 +456,16 @@
       text-shadow: 0 0 10px rgba(34,211,238,0.5);
     }
     
-    /* Footer với hiệu ứng */
+    /* Footer với hiệu ứng nâng cao */
     footer{
       color:var(--muted);
       text-align:center;
-      margin-top:20px;
-      padding: 20px;
+      margin-top:30px;
+      padding: 25px;
       border-top: 1px solid var(--border);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(5px);
     }
     
     footer::before {
@@ -382,6 +489,7 @@
       text-decoration: none;
       transition: all 0.3s ease;
       position: relative;
+      font-weight: 600;
     }
     
     footer a::after {
@@ -390,7 +498,7 @@
       bottom: -2px;
       left: 0;
       width: 0;
-      height: 1px;
+      height: 2px;
       background: var(--brand);
       transition: width 0.3s ease;
     }
@@ -405,10 +513,10 @@
     }
     
     .tiny{font-size:12px;color:var(--muted)}
-    .list-tight li{margin:.25rem 0}
+    .list-tight li{margin:.4rem 0}
     .strong{font-weight:600}
     
-    /* Hiệu ứng scroll reveal */
+    /* Hiệu ứng scroll reveal nâng cao */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -420,20 +528,39 @@
       transform: translateY(0);
     }
     
-    /* Thông báo nổi */
-    .notification {
+    /* Hệ thống thông báo thông minh */
+    .notification-system {
       position: fixed;
       top: 20px;
       right: 20px;
-      padding: 15px 20px;
-      border-radius: 8px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+    }
+    
+    .notification {
+      padding: 16px 20px;
+      border-radius: 12px;
       background: var(--card);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      z-index: 10000;
       transform: translateX(150%);
-      transition: transform 0.5s ease;
-      max-width: 300px;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .notification::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
     }
     
     .notification.show {
@@ -452,13 +579,178 @@
       border-left: 4px solid var(--danger);
     }
     
+    .notification.info {
+      border-left: 4px solid var(--brand);
+    }
+    
+    .notification-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .notification-title {
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .notification-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+    
+    .notification-close:hover {
+      color: var(--danger);
+    }
+    
+    .notification-content {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    /* Alert quan trọng với timer */
+    .important-alert {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: var(--card);
+      border: 2px solid var(--danger);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      z-index: 10001;
+      max-width: 500px;
+      width: 90%;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(20px);
+    }
+    
+    .important-alert.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .alert-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .alert-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .alert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .alert-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--danger);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .alert-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+    
+    .alert-close:hover {
+      color: var(--danger);
+    }
+    
+    .alert-content {
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    
+    .alert-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .alert-timer {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    
+    .alert-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--brand2);
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--border);
+      transform: translateY(-2px);
+    }
+    
     /* Hiệu ứng cho code hoặc text đặc biệt */
     code {
       background: rgba(0,0,0,0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
       font-family: monospace;
       transition: all 0.3s ease;
+      font-size: 13px;
     }
     
     code:hover {
@@ -526,18 +818,113 @@
         box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
       }
     }
+    
+    /* Quick action buttons */
+    .quick-actions {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .action-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    
+    .action-btn:hover {
+      background: var(--brand2);
+      transform: scale(1.1);
+      box-shadow: var(--shadow), var(--glow);
+    }
+    
+    /* Progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), var(--brand2));
+      z-index: 10002;
+      transition: width 0.3s ease;
+    }
   </style>
 </head>
 <body>
   <!-- Hiệu ứng nền -->
   <div class="bg-animation"></div>
   
-  <!-- Thông báo nổi -->
-  <div class="notification">
-    <p>Chào mừng đến với FB Group Poster Pro</p>
+  <!-- Progress bar -->
+  <div class="progress-bar"></div>
+  
+  <!-- Hệ thống thông báo -->
+  <div class="notification-system" id="notificationSystem"></div>
+  
+  <!-- Alert quan trọng -->
+  <div class="alert-overlay" id="alertOverlay"></div>
+  <div class="important-alert" id="importantAlert">
+    <div class="alert-header">
+      <div class="alert-title">
+        <span>⚠️ QUAN TRỌNG</span>
+      </div>
+      <button class="alert-close" id="alertClose">&times;</button>
+    </div>
+    <div class="alert-content">
+      <p><strong>FB Group Poster Pro</strong> là công cụ hỗ trợ đăng bài lên Facebook Groups. Vui lòng đọc kỹ các điều khoản sau:</p>
+      <ul>
+        <li>Chỉ sử dụng cho mục đích hợp pháp</li>
+        <li>Tuân thủ pháp luật Việt Nam và chính sách Facebook</li>
+        <li>Bạn tự chịu trách nhiệm về mọi hành vi sử dụng</li>
+      </ul>
+    </div>
+    <div class="alert-footer">
+      <div class="alert-timer" id="alertTimer">Tự động đóng sau: <span id="timerCount">10</span>s</div>
+      <div class="alert-actions">
+        <button class="btn btn-secondary" id="dontShowAgain">Đừng hiện lại (2h)</button>
+        <button class="btn btn-primary" id="understandBtn">Tôi đã hiểu</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Quick actions -->
+  <div class="quick-actions">
+    <button class="action-btn" id="scrollToTop" title="Lên đầu trang">↑</button>
+    <button class="action-btn" id="contactBtn" title="Liên hệ ngay">📞</button>
   </div>
   
   <div class="wrap">
+    <!-- Contact Header -->
+    <div class="contact-header">
+      <div class="logo">
+        <h2 style="margin:0;background:linear-gradient(90deg, var(--brand), var(--brand2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+          FB Group Poster Pro
+        </h2>
+      </div>
+      <div class="contact-buttons">
+        <a href="https://zalo.me/0905633918" class="contact-btn zalo" target="_blank">
+          <span>Zalo: 0905633918</span>
+        </a>
+        <a href="sms:0905633918" class="contact-btn sms">
+          <span>SMS: 0905633918</span>
+        </a>
+      </div>
+    </div>
+    
     <header class="hero reveal">
       <h1>FB Group Poster Pro</h1>
       <p class="sub">
@@ -777,6 +1164,15 @@
         <b>không phải</b> kênh tư vấn pháp lý hoặc tư vấn chính sách Facebook.
       </p>
 
+      <div class="contact-buttons" style="justify-content: center; margin: 20px 0;">
+        <a href="https://zalo.me/0905633918" class="contact-btn zalo" target="_blank">
+          <span>📞 Zalo: 0905633918</span>
+        </a>
+        <a href="sms:0905633918" class="contact-btn sms">
+          <span>💬 SMS: 0905633918</span>
+        </a>
+      </div>
+
       <p class="tiny">
         Bằng việc cài đặt, kích hoạt hoặc tiếp tục sử dụng FB Group Poster Pro,
         bạn xác nhận đã đọc, hiểu và đồng ý với toàn bộ Điều khoản & Cảnh báo pháp lý nêu trên.
@@ -790,7 +1186,155 @@
   </div>
 
   <script>
-    // Tạo hiệu ứng hoa rơi
+    // ========== HỆ THỐNG THÔNG BÁO THÔNG MINH ==========
+    class NotificationSystem {
+      constructor() {
+        this.container = document.getElementById('notificationSystem');
+        this.notifications = new Set();
+      }
+      
+      show(message, type = 'info', duration = 5000) {
+        const id = 'notification-' + Date.now();
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.id = id;
+        
+        const icon = this.getIcon(type);
+        
+        notification.innerHTML = `
+          <div class="notification-header">
+            <div class="notification-title">
+              ${icon} ${this.getTitle(type)}
+            </div>
+            <button class="notification-close" onclick="notificationSystem.close('${id}')">&times;</button>
+          </div>
+          <div class="notification-content">${message}</div>
+        `;
+        
+        this.container.appendChild(notification);
+        this.notifications.add(id);
+        
+        // Hiệu ứng xuất hiện
+        setTimeout(() => notification.classList.add('show'), 10);
+        
+        // Tự động đóng
+        if (duration > 0) {
+          setTimeout(() => this.close(id), duration);
+        }
+        
+        return id;
+      }
+      
+      getIcon(type) {
+        const icons = {
+          success: '✅',
+          warning: '⚠️',
+          error: '❌',
+          info: 'ℹ️'
+        };
+        return icons[type] || 'ℹ️';
+      }
+      
+      getTitle(type) {
+        const titles = {
+          success: 'Thành công',
+          warning: 'Cảnh báo',
+          error: 'Lỗi',
+          info: 'Thông tin'
+        };
+        return titles[type] || 'Thông báo';
+      }
+      
+      close(id) {
+        const notification = document.getElementById(id);
+        if (notification) {
+          notification.classList.remove('show');
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+            this.notifications.delete(id);
+          }, 300);
+        }
+      }
+      
+      closeAll() {
+        this.notifications.forEach(id => this.close(id));
+      }
+    }
+    
+    // Khởi tạo hệ thống thông báo
+    const notificationSystem = new NotificationSystem();
+    
+    // ========== ALERT QUAN TRỌNG VỚI TIMER ==========
+    class ImportantAlert {
+      constructor() {
+        this.alert = document.getElementById('importantAlert');
+        this.overlay = document.getElementById('alertOverlay');
+        this.timerElement = document.getElementById('timerCount');
+        this.timer = 10;
+        this.timerInterval = null;
+        
+        this.init();
+      }
+      
+      init() {
+        // Kiểm tra xem đã đóng alert trong 2h chưa
+        const lastClose = localStorage.getItem('alertClosedAt');
+        const twoHoursInMs = 2 * 60 * 60 * 1000;
+        
+        if (!lastClose || (Date.now() - lastClose) > twoHoursInMs) {
+          setTimeout(() => this.show(), 1000);
+        }
+        
+        // Event listeners
+        document.getElementById('alertClose').addEventListener('click', () => this.close());
+        document.getElementById('understandBtn').addEventListener('click', () => this.close());
+        document.getElementById('dontShowAgain').addEventListener('click', () => {
+          localStorage.setItem('alertClosedAt', Date.now());
+          this.close();
+        });
+        
+        this.overlay.addEventListener('click', () => this.close());
+      }
+      
+      show() {
+        this.alert.classList.add('show');
+        this.overlay.classList.add('show');
+        this.startTimer();
+      }
+      
+      close() {
+        this.alert.classList.remove('show');
+        this.overlay.classList.remove('show');
+        this.stopTimer();
+      }
+      
+      startTimer() {
+        this.timer = 10;
+        this.timerElement.textContent = this.timer;
+        
+        this.timerInterval = setInterval(() => {
+          this.timer--;
+          this.timerElement.textContent = this.timer;
+          
+          if (this.timer <= 0) {
+            this.close();
+          }
+        }, 1000);
+      }
+      
+      stopTimer() {
+        if (this.timerInterval) {
+          clearInterval(this.timerInterval);
+          this.timerInterval = null;
+        }
+      }
+    }
+    
+    // ========== HIỆU ỨNG NÂNG CAO ==========
+    
+    // Tạo hiệu ứng hoa rơi nâng cao
     function createPetal() {
       const petal = document.createElement('div');
       petal.classList.add('petal');
@@ -812,11 +1356,17 @@
       const delay = Math.random() * 5;
       petal.style.animationDelay = `${delay}s`;
       
+      // Độ mờ ngẫu nhiên
+      const blur = Math.random() * 1.5;
+      petal.style.filter = `blur(${blur}px)`;
+      
       document.body.appendChild(petal);
       
       // Xóa petal sau khi rơi xong
       setTimeout(() => {
-        petal.remove();
+        if (petal.parentNode) {
+          petal.parentNode.removeChild(petal);
+        }
       }, (duration + delay) * 1000);
     }
     
@@ -828,7 +1378,7 @@
     }
     
     // Lặp lại hiệu ứng hoa rơi
-    setInterval(createPetals, 5000);
+    setInterval(createPetals, 8000);
     
     // Hiệu ứng scroll reveal
     const revealElements = document.querySelectorAll('.reveal');
@@ -846,26 +1396,27 @@
       });
     }
     
-    // Kiểm tra khi trang tải và khi scroll
-    window.addEventListener('load', checkReveal);
-    window.addEventListener('scroll', checkReveal);
-    
-    // Hiệu ứng thông báo nổi
-    function showNotification(message, type = 'info') {
-      const notification = document.querySelector('.notification');
-      notification.textContent = message;
-      notification.className = 'notification';
-      notification.classList.add(type, 'show');
-      
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 5000);
+    // Progress bar khi scroll
+    function updateProgressBar() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.querySelector('.progress-bar').style.width = scrolled + '%';
     }
     
-    // Hiển thị thông báo chào mừng
-    setTimeout(() => {
-      showNotification('Chào mừng đến với FB Group Poster Pro', 'success');
-    }, 1000);
+    // Kiểm tra khi trang tải và khi scroll
+    window.addEventListener('load', () => {
+      checkReveal();
+      // Hiển thị thông báo chào mừng
+      setTimeout(() => {
+        notificationSystem.show('Chào mừng đến với FB Group Poster Pro! Vui lòng đọc kỹ điều khoản sử dụng.', 'info', 6000);
+      }, 1500);
+    });
+    
+    window.addEventListener('scroll', () => {
+      checkReveal();
+      updateProgressBar();
+    });
     
     // Hiệu ứng cho các liên kết điều hướng
     document.querySelectorAll('nav a').forEach(link => {
@@ -912,6 +1463,23 @@
     document.querySelectorAll('b, .strong').forEach(el => {
       el.classList.add('highlight');
     });
+    
+    // Quick actions
+    document.getElementById('scrollToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    document.getElementById('contactBtn').addEventListener('click', () => {
+      window.open('https://zalo.me/0905633918', '_blank');
+    });
+    
+    // Khởi tạo alert quan trọng
+    const importantAlert = new ImportantAlert();
+    
+    // Demo thông báo (có thể xóa trong production)
+    setTimeout(() => {
+      notificationSystem.show('Đã tải hoàn tất trang điều khoản sử dụng', 'success', 4000);
+    }, 3000);
   </script>
 </body>
 </html>
